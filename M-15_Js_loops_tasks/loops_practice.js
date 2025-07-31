@@ -135,4 +135,33 @@ while (i >= 10) {
 }
  */
 
+// odd number
 
+// for (let i = 0; i <= 20; i++) {
+//   if (i % 2 !== 0) {
+//     console.log("Odd number: " + i);
+//   }
+// }
+
+// give me the list of numbers between 1 to 30 divisible by 5
+
+// for (let i = 1; i <= 100; i++) {
+//   if (i % 5 === 0 && i % 3 === 0) {
+//     console.log("Number divisible by 5: " + i);
+//   }
+// }
+
+/* for (let i = 1; i <= 20; i++) {
+  if (i % 3 === 0) {
+    console.log(i);
+  }
+} */
+
+// break
+
+for (let i = 1; i <= 10; i++) {
+  if (i === 5) {
+    continue;
+  }
+  console.log(i);
+}
