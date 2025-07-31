@@ -15,7 +15,7 @@ Create a simple JavaScript program that takes a student's score as input and ret
 // Grade Calculator
 
 //Take input from users
-//let score = prompt("Enter the students score 0-100: "); // wont be working in console environment
+let score = prompt("Enter the students score 0-100: "); // wont be work in console environment
 
 // For testing purposes, we can set a score directly
 let score = 49;
