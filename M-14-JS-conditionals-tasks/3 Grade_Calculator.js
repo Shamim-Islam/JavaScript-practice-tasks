@@ -11,6 +11,3 @@ Create a simple JavaScript program that takes a student's score as input and ret
     F: 0-59
 
 ***/
-
-
-
