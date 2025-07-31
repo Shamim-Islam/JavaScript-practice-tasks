@@ -8,7 +8,11 @@ Ticket fare Calculator
 */
 
 
+let age = 50;
 
+if(age < 10) {
+    console.log("Free Ticket");
+}
 
 
 

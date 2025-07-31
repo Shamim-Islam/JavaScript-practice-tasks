@@ -10,3 +10,25 @@ write a simple if-else.
 also, write it using ternary operator.
 
  */
+
+// In simple if-else format
+
+let num1 = 110;
+let num2 = 20;
+
+let result;
+
+if (num1 > num2) {
+  result = num1 * 2;
+} else {
+  result = num1 + num2;
+}
+
+console.log(result);
+
+
+// In ternary operator format
+
+num1 > num2 ? (result = num1 * 2) : (result = num1 + num2);
+
+console.log(result);
