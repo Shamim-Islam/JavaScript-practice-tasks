@@ -175,15 +175,47 @@
  * Objective: write a function to give me the sum of all numbers in an array
  * */
 
-function sumOfNumbers(numbers) {
+// function sumOfNumbers(numbers) {
+//   let sum = 0;
+//   for (const number of numbers) {
+//     console.log(number);
+//     sum = sum + number;
+//   }
+//   return sum;
+// }
+
+// const nums = [55, 62, 13, 6, 7];
+// const sum = sumOfNumbers(nums);
+// console.log("Sum of numbers is ", sum);
+
+// Create function that will return only the even numbers
+// return the sum of even numbers
+
+function evenNumbersOnly(numbers) {
+  const even = [];
+  for (const number of numbers) {
+    if (number % 2 === 0) {
+      // console.log(number);
+      even.push(number);
+    }
+  }
+  return even;
+}
+
+const numbers = [5, 8, 91, 24, 6];
+const evens = evenNumbersOnly(numbers);
+// console.log("even numbers are : ", evens);
+
+function sumOfEvenNumbers(numbers) {
   let sum = 0;
   for (const number of numbers) {
-    console.log(number);
-    sum = sum + number;
+    if (number % 2 === 0) {
+      console.log(number);
+      sum = sum + number;
+    }
   }
   return sum;
 }
 
-const nums = [55, 62, 13, 6, 7];
-const sum = sumOfNumbers(nums);
-console.log("Sum of numbers is ", sum);
+const sum = sumOfEvenNumbers(numbers);
+console.log("sum of even number :", sum);
