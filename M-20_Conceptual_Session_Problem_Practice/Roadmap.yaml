@@ -1,0 +1,40 @@
+
+✅ Previously Covered Topics
+----------------------------
+* var
+* Data types
+* Loops
+* Conditions
+* Object
+* Array
+
+Main Topics:
+---------------
+Array:
+* Array Traverse using:
+  * for loop
+  * while loop
+  * for...of loop
+* push
+* Reverse Array
+* unshift
+* sort an array
+* Array index values
+* Array of Objects
+* Access object inside array
+  * for...in loop
+* Copy Array Elements to another array
+* which method modified array and which are not?
+
+Functions:
+---------
+* What is function
+* types of function just overview
+* Function syntax
+* Parameters:
+  * Single
+  * Multiple
+* Arguments vs Parameters
+* Function return ***
+* Set return value to a variable
+* Different types of parameters
