@@ -13,7 +13,7 @@ function inchToFeet(inch) {
 const niloysHeight = inchToFeet(70);
 // console.log(niloysHeight);
 
-// Miles to km -- 1.60934
+// Miles to km ----------------- 1.60934
 
 function milesToKilometer(mile) {
   const kilo = mile * 1.60934;
