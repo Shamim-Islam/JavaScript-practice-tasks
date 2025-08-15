@@ -1,10 +1,11 @@
 // Problem-02 : Clean & Capitalize Characters
 
 function onlyCharacter(str) {
+  // string validation
   if (typeof str !== "string") {
     return "Invalid";
   }
-
+  // removing spaces and make it uppercase
   let strWithoutSpace = str.split(" ").join("");
   let strUppercase = strWithoutSpace.toUpperCase();
 

@@ -1,6 +1,7 @@
 // Problem-03 : FIFA Best Team Award
 
 function bestTeam(player1, player2) {
+  // object validation
   if (typeof player1 !== "object" || typeof player2 !== "object") {
     return "Invalid";
   }

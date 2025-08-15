@@ -1,6 +1,7 @@
 // Problem-04: Same Same But Different
 
 function isSame(arr1, arr2) {
+  // array validation
   if (Array.isArray(arr1) !== true || Array.isArray(arr2) !== true) {
     return "Invalid";
   }
