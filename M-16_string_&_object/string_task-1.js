@@ -1,6 +1,3 @@
-
-
-
 // Js strig problem no-1
 
 let ltr = "javascript is an awesome";
