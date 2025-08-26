@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Comment Box</title>
+    <style>
+      .comment {
+        border: 2px solid red;
+        background-color: lightcyan;
+        margin: 10px;
+        padding: 10px;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>My Awesome Comment Box. Write what in your mind !</h1>
+    <section>
+      <h3>All comments here</h3>
+      <div id="comment-container">
+        <p class="comment">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem hic nulla
+          consequatur ea maxime at doloremque, quaerat obcaecati odit quibusdam?
+        </p>
+        <p class="comment">
+          Delectus nemo illum odio, maxime aperiam fuga voluptate totam pariatur
+          non nesciunt, sed hic laudantium distinctio veritatis dolor molestiae
+          quos?
+        </p>
+        <p class="comment">
+          Assumenda provident dolorum, ratione ipsam rem perferendis nobis quod
+          facere quae cumque voluptatem ipsum! Pariatur id ipsa aspernatur quae
+          asperiores!
+        </p>
+      </div>
+      <!-- <form> -->
+      <textarea name="" id="comment-text-box" cols="60" rows="5"></textarea>
+      <br />
+      <button id="btn-post-comment">Post Comments</button>
+      <!-- </form> -->
+    </section>
+    <script src="./comment.js"></script>
+  </body>
+</html>
