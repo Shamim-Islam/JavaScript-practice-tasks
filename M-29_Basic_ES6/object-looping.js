@@ -17,7 +17,7 @@ const employee = {
 
 for (const key in employee) {
   const value = employee[key];
-  //   console.log(key, value);
+  console.log(key, value);
 }
 
 // Object looping using - for of looping
