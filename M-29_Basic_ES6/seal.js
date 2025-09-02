@@ -6,9 +6,6 @@ const employee = {
   age: 22,
 };
 
-// freeze -----------------------Not allowed any action
-// Object.freeze(employee);
-
 // seal ---------------------- Only allowed modify action
 Object.seal(employee);
 
@@ -22,4 +19,3 @@ employee.salary = employee.salary + 5000;
 employee.location = "Dhaka";
 
 console.log(employee);
-

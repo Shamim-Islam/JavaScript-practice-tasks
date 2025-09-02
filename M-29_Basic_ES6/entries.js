@@ -17,3 +17,7 @@ console.log(values);
 const entries = Object.entries(employee);
 console.log(entries);
 
+// Loop
+for (const [key, value] of entries) {
+  console.log(key, value);
+}
