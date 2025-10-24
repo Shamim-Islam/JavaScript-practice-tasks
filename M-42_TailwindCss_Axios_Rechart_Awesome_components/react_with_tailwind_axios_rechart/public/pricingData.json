@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Basic Plan",
+    "price": "$19/month",
+    "features": [
+      "Access to gym equipment",
+      "Locker room access",
+      "1 free fitness consultation",
+      "Open gym hours only"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Standard Plan",
+    "price": "$39/month",
+    "features": [
+      "All Basic Plan features",
+      "Unlimited group classes",
+      "Free protein shake per week",
+      "Extended gym hours",
+      "Discount on personal training"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Premium Plan",
+    "price": "$59/month",
+    "features": [
+      "All Standard Plan features",
+      "Unlimited personal training sessions",
+      "Access to swimming pool & sauna",
+      "Diet & nutrition plan",
+      "Priority support"
+    ]
+  }
+]

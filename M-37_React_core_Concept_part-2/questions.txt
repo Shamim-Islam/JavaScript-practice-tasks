@@ -1,0 +1,10 @@
+
+
+1. i am learning reactJS, please give me the lists of core concepts of react for beginners and give me a mind map to revise the core concepts.
+2. give me the differences between useState and useEffect and use
+3. explain the use() introduced in react 19
+4. 10 common mistakes for beginners in reactJS
+5. why key property is important while rendering a list in react
+6. give me a summery of all react core concepts
+7. give me a summery of all react hooks
+8. 
