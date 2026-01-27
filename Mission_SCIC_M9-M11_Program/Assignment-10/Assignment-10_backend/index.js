@@ -31,6 +31,7 @@ async function run() {
 
     const database = client.db("petService");
     const petServices = database.collection("listing");
+    const orderCollections = database.collection("orders");
 
     // CREATE LISTING
     app.post("/api/listing", async (req, res) => {
@@ -238,17 +239,183 @@ async function run() {
       }
     });
 
-    // api health check
-    app.get("/api/health", (req, res) => {
-      res.send({
-        success: true,
-        message: "API is healthy",
-      });
+    // Update Listing
+    app.put("/update/:id", async (req, res) => {
+      try {
+        const data = req.body;
+        const id = req.params.id;
+        delete data._id;
+
+        const query = { _id: new ObjectId(id) };
+        const updatedData = { $set: data };
+
+        const result = await petServices.updateOne(query, updatedData);
+        res.send(result);
+      } catch {
+        console.error(error);
+        res.status(500).send({ message: "Failed to update listing" });
+      }
     });
+
+    // DELETE LISTING
+    app.delete("/api/listing/:id", async (req, res) => {
+      try {
+        const id = req.params.id;
+        const query = { _id: new ObjectId(id) };
+
+        const result = await petServices.deleteOne(query);
+
+        if (result.deletedCount === 0) {
+          return res.status(404).send({ message: "Listing not found" });
+        }
+
+        res.send({
+          success: true,
+          message: "Listing deleted successfully",
+        });
+      } catch (error) {
+        console.error(error);
+        res.status(500).send({ message: "Failed to delete listing" });
+      }
+    });
+
+    // Like functionality
+    app.post("/api/listing/:id/like", async (req, res) => {
+      try {
+        const listingId = req.params.id;
+        const { userEmail } = req.body;
+
+        if (!userEmail) {
+          return res.status(401).send({ message: "Unauthorized" });
+        }
+
+        const listing = await petServices.findOne({
+          _id: new ObjectId(listingId),
+        });
+
+        if (!listing) {
+          return res.status(404).send({ message: "Listing not found" });
+        }
+
+        const alreadyLiked = listing.likes?.includes(userEmail);
+
+        const update = alreadyLiked
+          ? { $pull: { likes: userEmail } }
+          : { $addToSet: { likes: userEmail } };
+
+        await petServices.updateOne({ _id: new ObjectId(listingId) }, update);
+
+        const updated = await petServices.findOne({
+          _id: new ObjectId(listingId),
+        });
+
+        res.send({
+          success: true,
+          liked: !alreadyLiked,
+          likes: updated.likes || [],
+        });
+      } catch (error) {
+        console.error("LIKE ERROR", error);
+        res.status(500).send({ message: "Failed to toggle like" });
+      }
+    });
+
+    // app.post("/orders", async (req, res) => {
+    //   const data = req.body;
+    //   console.log(data);
+    // });
+
+    // Order functionality
+
+    // Submit orders
+    app.post("/api/orders", async (req, res) => {
+      try {
+        const data = req.body;
+        data.createdAt = new Date();
+        data.status = "pending";
+
+        const result = await orderCollections.insertOne(data);
+
+        res.status(201).send({
+          success: true,
+          message: "Order placed successfully",
+          orderId: result.insertedId,
+        });
+      } catch (error) {
+        console.error(error);
+        res.status(500).send({ message: "Failed to place order" });
+      }
+    });
+
+    app.get("/api/orders/my-orders", async (req, res) => {
+      try {
+        const { email } = req.query;
+
+        if (!email) {
+          return res.status(400).send({ message: "Email is required" });
+        }
+
+        const orders = await orderCollections
+          .find({ buyerEmail: email })
+          .sort({ createdAt: -1 })
+          .toArray();
+
+        res.send({ orders });
+      } catch (error) {
+        console.error(error);
+        res.status(500).send({ message: "Failed to fetch orders" });
+      }
+    });
+
+    app.get("/api/orders/stats", async (req, res) => {
+      try {
+        const { email } = req.query;
+
+        if (!email) {
+          return res.status(400).send({ message: "Email is required" });
+        }
+
+        const orders = await orderCollections
+          .find({ buyerEmail: email })
+          .toArray();
+
+        const totalOrders = orders.length;
+        const totalAmount = orders.reduce(
+          (sum, order) =>
+            sum + Number(order.price || 0) * Number(order.quantity || 1),
+          0,
+        );
+
+        res.send({
+          totalOrders,
+          totalSpent: totalAmount,
+          pendingOrders: orders.filter((o) => o.status === "pending").length,
+          completedOrders: orders.filter((o) => o.status === "completed")
+            .length,
+        });
+      } catch (error) {
+        console.error(error);
+        res.status(500).send({ message: "Failed to fetch order stats" });
+      }
+    });
+
+    //api health check
+    // app.get("/api/health", (req, res) => {
+    //   res.send({
+    //     success: true,
+    //     message: "API is healthy",
+    //   });
+    // });
+
+    // app.get("/api/health", (req, res) => {
+    //   res.json({ status: "ok" });
+    // });
 
     // MongoDB connection test
     await client.db("admin").command({ ping: 1 });
-    console.log("MongoDB connected successfully");
+    console.log(
+      "Pinged your deployment. You successfully connected to MongoDB!",
+    );
   } catch (error) {
     console.error(error);
   }
